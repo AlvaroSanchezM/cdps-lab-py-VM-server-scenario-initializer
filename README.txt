@@ -1,3 +1,7 @@
+# Authors:
+# alvaro.sanchezm@alumnos.upm.es
+# e.gdealfonso@alumnos.upm.es
+
 Para ejecutar este script, el archivo "gestiona-pc1" necesita permisos de ejecución.
 Estos se pueden garantizar mediante el comando "chmod +x gestiona-pc1".
 
