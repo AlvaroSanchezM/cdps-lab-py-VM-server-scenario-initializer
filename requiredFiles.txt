@@ -1,1 +1,6 @@
+NEEDED:
+cdps-vm-base-pc1.qcow2
+plantilla-vm-pc1.xml
 
+OPTIONAL:
+gestiona-pc1.json
