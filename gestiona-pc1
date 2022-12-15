@@ -1,0 +1,51 @@
+#!/usr/bin/python3
+import logging
+from pc1gestArgs import gestionArgumentos
+from pc1create import crear
+from pc1start import inicializar
+from pc1stop import parar
+from pc1destroy import borrar
+from pc1monitor import monitorizaPers
+from pc1monitor import monitoriza
+
+#ATENCIÓN, NECESITA PERMISOS DE EJECUCIÓN
+#NECESARIO EJECUTAR LO SIGUIENTE ANTES DE INTENTAR INSERTAR EL COMANDO: chmod +x gestiona-pc1
+
+#logger = logging.getLogger('gestiona-pc1')
+
+orden = gestionArgumentos()
+logging.debug("pasada gestión de argumentos; orden = "+orden)
+
+nombresMaquinas = ["lb", "c1", "s1", "s2", "s3", "s4", "s5"]
+
+if orden == "create":
+	crear(nombresMaquinas)
+elif orden == "start":
+	inicializar(nombresMaquinas)
+elif orden == "stop":
+	parar(nombresMaquinas)
+elif orden == "destroy":
+	borrar(nombresMaquinas)
+	logging.info("--- Se ha borrado el escenario con éxito ---")
+elif orden == "monitorPers":
+	monitorizaPers()
+elif orden == "monitor":
+	monitoriza()
+elif orden == "help" or "\"No introducida\"":
+	#texto de ayuda
+	#hl acortamiento de help-line
+	hl1 = '\n\n'
+	hl2 = ' Modo de empleo: /gestiona-pc1. <orden> [OPCIÓN]"\n\n'
+	hl3 = '<orden> posibles:\n'
+	hl4 = ' create  : crea los ficheros .qcow2 de diferencias, y los de especificación en XML,\n           de cada MV, así como los bridges virtuales que soportan las LAN del escenario.\n'
+	hl4_1 = '    [NÚMERO] : número de servidores web que se crean (entre 1 y 5).\n'
+	hl4_2 = '               Sin NÚMERO, se toman 2 por defecto.\n\n'
+	hl5 = ' start   : arranca las máquinas virtuales y crea su consola\n'
+	hl6 = ' stop    : para (detiene) las máquinas virtuales (sin liberarlas)\n'
+	hl7 = ' destroy : libera el escenario, borrando todos los ficheros creados\n'
+	hlOpt10 = ' monitor : muestra el estado de las máquinas.\n'
+	hlOpt11 = '    [-pers] : con esta opción incluida en el comando, el estado de las máquinas\n               se abre en una ventana nueva\n\n'
+	hl8 = ' --help  : para ver este texto de ayuda\n'
+	print(hl1+hl2+hl3+hl4+hl4_1+hl4_2+hl5+hl6+hl7+hlOpt10+hlOpt11+hl8)
+else:
+	print("Comando inválido.\n\nPara ver como se usa el comando, escribir \"./gestiona-pc1 --help\"")
