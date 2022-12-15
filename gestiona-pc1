@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+# Authors:
+# alvaro.sanchezm@alumnos.upm.es
+# e.gdealfonso@alumnos.upm.es
+
 import logging
 from pc1gestArgs import gestionArgumentos
 from pc1create import crear
